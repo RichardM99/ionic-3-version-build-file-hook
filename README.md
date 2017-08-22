@@ -39,7 +39,7 @@ The *appAfterBuild.js* script in this repo automatically adds a version number t
 
    **node scripts/appAfterBuild.js**
 
-   from the root directory. This is assuming there is already a browser build in your *platforms/* directory.
+   from the root directory. This is assuming there is already a browser build in your */platforms* directory.
    
  * You will more than likely need to edit lines 23 and 25 depending on where your browser platform node is located 
    in your *config.xml* file
