@@ -34,7 +34,7 @@ The *appAfterBuild.js* script in this repo automatically adds a version number t
  <version name="AppVersion" value="1" />
 ```
 
-* Once your browser build completes, the script will run automatically. 
+* Once your browser build completes the script will run automatically. 
 * If you want to use without running a new build you can simply run  
 
    **node scripts/appAfterBuild.js**
