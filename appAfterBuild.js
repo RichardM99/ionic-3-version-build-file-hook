@@ -9,9 +9,7 @@ logMessage('Incrementing version number for main.js file...');
 // read config.xml file
 fs.readFile('./config.xml', 'utf8', function(err, data) {
     
-    if (err) {
-      return logMessage('Could not read config.xml file. The following error occured:', err);
-    }
+    if (err) return logMessage('Could not read config.xml file. The following error occured:', err);
     
     // store original config.xml file
     var xmlOrig = data;
