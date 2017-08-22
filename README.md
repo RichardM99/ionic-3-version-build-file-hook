@@ -18,7 +18,7 @@ In order to ensure the browser downloads the newly created build file, we can ad
 
 **main.js?v=1**
 
-The *appAfterBuild.js* script in this repo automatically adds a version number to your *main.js* file once your build completes. It parses *config.xml*, looks for the *version* node in platform browser, increments it's value by one, and tacks it on to your main.js file as the version number ('v').
+The *appAfterBuild.js* script in this repo automatically adds a version number to your *main.js* file once your build completes. It parses *config.xml*, looks for the *version* node in platform browser, increments it's value by one, and tacks it on to your main.js file as the version number ('?v=').
 
 ## How To Use
 
