@@ -26,7 +26,7 @@ The *appAfterBuild.js* script in this repo automatically adds a version number t
 
 **Note:** This is assuming you have added the browser platform to your project. 
 
-* Create a folder called *scripts* in your root directory and place appAfterBuild.js in it
+* Create a folder called *scripts* in your root directory and place *appAfterBuild.js* in it
 * Make sure your platform browser node in *config.xml* includes the following
 
 ```html
