@@ -44,7 +44,7 @@ The *appAfterBuild.js* script in this repo automatically adds a version number t
  * You will more than likely need to edit lines 23 and 25 depending on where your browser platform node is located 
    in your *config.xml* file
    
-## References
+## Useful References
 Cordova Hooks Guide - https://cordova.apache.org/docs/en/latest/guide/appdev/hooks/
    
 
