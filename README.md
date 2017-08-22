@@ -1,5 +1,5 @@
 # ionic-3-version-build-file-hook
-A Cordova hook to version your *main.js* file post build
+A Cordova hook to version your *main.js* file post build.
 
 ## Requirments
 * Node Package Manager (NPM)
