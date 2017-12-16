@@ -30,25 +30,46 @@ fs.readFile('./config.xml', 'utf8', function(err, data) {
       // increment current version to create new version
       newVersion = (parseInt(currentVersion) + 1).toString();
        
-      // get our index.html page where main.js is loaded
+      // get our index.html page where main.js, main.css & polyfills.js is loaded
       var indexOrig = fs.readFileSync('./platforms/browser/www/index.html', 'utf8');
       
-      // regex to match main.js with version number e.g. main.js?v=1, main.js?v=2 etc ... 
-      var pattern = /(main\.js\?v=)\d+/;
+      // regex patterns to match main.js, polyfills.js ,main.css, cordova.js & vendor.js with version number e.g. main.js?v=1, main.js?v=2 etc ... 
+      var jsPattern = /(main\.js\?v=)\d+/,
+          polyPattern = /(polyfills\.js\?v=)\d+/,
+          cssPattern = /(main\.css\?v=)\d+/,
+          cordovaPattern = /(cordova\.js\?v=)\d+/,
+          vendorPattern = /(vendor\.js\?v=)\d+/;
 
-      // regex to match main.js without version number e.g. main.js.
-      // will be used on first build as the main.js will not have a version number at this point
-      if (!pattern.test(indexOrig)) pattern = /(main\.js)/;
+      // regex to match main.js, polyfills.js ,main.css, cordova.js & vendor.js without version number e.g. main.js.
+      // will be used on first build as the main.js, main.css ,polyfills.js & cordova.js will not have a version number at this point
+      if (!jsPattern.test(indexOrig)) jsPattern = /(main\.js)/;
+      if (!cssPattern.test(indexOrig)) cssPattern = /(main\.css)/;
+      if (!polyPattern.test(indexOrig)) polyPattern = /(polyfills\.js)/;
+      if (!cordovaPattern.test(indexOrig)) cordovaPattern = /(cordova\.js)/;
+      if (!vendorPattern.test(indexOrig)) vendorPattern = /(vendor\.js)/;
       
-      if (!pattern.test(indexOrig)) return logMessage('ERROR:','Regex failed to find main.js file in ../platforms/browser/www/index.html');
+      if (!jsPattern.test(indexOrig)) return logMessage('ERROR:','Regex failed to find main.js file in ../platforms/browser/www/index.html');
+      if (!cssPattern.test(indexOrig)) return logMessage('ERROR:','Regex failed to find main.css file in ../platforms/browser/www/index.html');
+      if (!polyPattern.test(indexOrig)) return logMessage('ERROR:','Regex failed to find polyfills.js file in ../platforms/browser/www/index.html');
+      if (!cordovaPattern.test(indexOrig)) return logMessage('ERROR:','Regex failed to find cordova.js file in ../platforms/browser/www/index.html');
+      if (!vendorPattern.test(indexOrig)) return logMessage('ERROR:','Regex failed to find vendor.js file in ../platforms/browser/www/index.html');
       
-      // create new index page from the old index page with the new version number added to the main.js file
-      var indexNew = indexOrig.replace(pattern, 'main.js?v=' + newVersion);
-      
+
+      // create new index page from the old index page with the new version number added to the main.js, main.css & polyfills.js file
+      var indexNewOne = indexOrig.replace(jsPattern, 'main.js?v=' + newVersion);
+      var indexNewTwo = indexNewOne.replace(cssPattern, 'main.css?v=' + newVersion);
+      var indexNewThree = indexNewTwo.replace(polyPattern, 'polyfills.js?v=' + newVersion);
+      var indexNewFour = indexNewThree.replace(cordovaPattern, 'cordova.js?v=' + newVersion);
+      var indexNewFive = indexNewFour.replace(vendorPattern, 'vendor.js?v=' + newVersion);
+
       // replace the original index.html file with our new one
       try {
-        fs.writeFileSync('./platforms/browser/www/index.html', indexNew, 'utf8');
+        fs.writeFileSync('./platforms/browser/www/index.html', indexNewFive, 'utf8');
         logMessage('main.js file in /platforms/browser/www/index.html is now main.js?v=' + newVersion);
+        logMessage('main.css file in /platforms/browser/www/index.html is now main.css?v=' + newVersion);
+        logMessage('polyfills.js file in /platforms/browser/www/index.html is now polyfills.js?v=' + newVersion);
+        logMessage('cordova.js file in /platforms/browser/www/index.html is now cordova.js?v=' + newVersion);
+        logMessage('vendor.js file in /platforms/browser/www/index.html is now vendor.js?v=' + newVersion);
       } catch (err) {
         return logMessage('Could not save new index.html file. The following error occured:', err);
       }
