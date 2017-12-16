@@ -1,5 +1,5 @@
 # ionic-3-version-build-file-hook
-A Cordova hook to version your *main.js* file post build.
+A Cordova hook to version your *main.js*, *polyfills.js*, *cordova.js*, *vendor.js* & *main.css* files post build.
 
 ## Requirments
 * Node Package Manager (NPM)
@@ -18,7 +18,7 @@ In order to ensure the browser downloads the newly created build file, we can ad
 
 **main.js?v=1**
 
-The *appAfterBuild.js* script in this repo automatically adds a version number to your *main.js* file once your build completes. It parses *config.xml*, looks for the *version* node in platform browser, increments it's value by one, and tacks it on to your main.js file as the version number ( '?v=' ) The *version* node value in *config.xml* is also updated accordingly so you don't have to keep manually changing it before you run the build.
+The *appAfterBuild.js* script in this repo automatically adds a version number to your *main.js*, *polyfills.js*, *cordova.js*, *vendor.js* & *main.css* files once your build completes. It parses *config.xml*, looks for the *version* node in platform browser, increments it's value by one, and tacks it on to your files as the version number ( '?v=' ) The *version* node value in *config.xml* is also updated accordingly so you don't have to keep manually changing it before you run the build.
 
 ## How To Use
 
