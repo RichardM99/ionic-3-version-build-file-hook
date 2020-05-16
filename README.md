@@ -1,6 +1,12 @@
 # ionic-3-version-build-file-hook
 A Cordova hook to version your *main.js*, *polyfills.js*, *cordova.js*, *vendor.js* & *main.css* files post build.
 
+## [DEPRECATED]
+I no longer (and never really did) maintain the code in this repository.
+
+Ionic is now on version 5 and as such it is unlikely the code in this repository is still fit for purpose. The concept of hooks however is still relevant so perhaps it might still serve as a starting point for creating your own. The code was also written when I was an intern so it is not of a high quality.
+
+
 ## Requirments
 * Node Package Manager (NPM)
 * Ionic Framework
